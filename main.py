@@ -16,7 +16,7 @@ chromecast_name = os.getenv('GRP_NAME') #set envar to match your speaker or grou
 app = Flask(__name__)
 logging.info("Starting up chromecasts")
 chromecasts, _ = pychromecast.get_chromecasts()
-cast = next(cc for cc in chromecasts if cc.device.friendly_name == chromecast_name)
+cast = next(cc for cc in chromecasts if cc.cast_info.friendly_name == chromecast_name)
 
 def play_tts(text, lang='en', slow=False):
     tts = gTTS(text=text, lang=lang, slow=slow)
